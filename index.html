@@ -1,10 +1,54 @@
 <body>
     <script>
-        function computerPlay(){}
-        function playRound(playerSelection, computerSelection){}
+        function computerPlay(){
+            var x = Math.floor((Math.random() * 3) + 1);
+            return x; //1:rock, 2:papper, 3:scissors
+        }
+        function playRound(playerSelection, computerSelection){
+            if (playerSelection >= computerSelection 
+                || (playerSelection == 1 && computerSelection == 3)) {
+                    return "player";
+            } else {
+                return "computer";
+            }
+        }
         function game(){
+            var score = 0;
             for (i = 0; i < 5; i++){
-                playRound();
+                var userSelectionLex = prompt("Rock, Papper, or Scissors?: ", "Rock")
+                    .toLowerCase();
+                var userSelectionNumeric;
+                switch(userSelectionLex) {
+                    case "rock": userSelectionNumeric = 1;
+                    case "papper": userSelectionNumeric = 2;
+                    case "scissors": userSelectionNumeric = 3;
+                    default: userSelectionNumeric = 1;
+                }
+                var computerSelectionNumeric = computerPlay();
+                var computerSelectionLex;
+                switch(computerSelectionNumeric) {
+                    case 1: computerSelectionLex = "rock";
+                    case 2: computerSelectionLex = "papper";
+                    case 3: computerSelectionLex = "scissors";
+                    default: computerSelectionLex = "rock";
+                }
+                var roundResult = playRound(userSelectionNumeric, computerSelectionNumeric);
+                if (roundResult == "player") {
+                    console.log("You Win! " + userSelectionLex 
+                        + " beats " + computerSelectionLex);
+                    score++;
+                } else {
+                    console.log("You Lose! " + computerSelectionLex 
+                        + " beats " + userSelectionLex);
+                    score--;
+                }
+            }
+            if (score > 0) {
+                console.log("Congratulations!! You Won!");
+            } else if (score < 0) {
+                console.log("You Lost...");
+            } else {
+                console.log("It's a Tie!");
             }
         }
     </script>
