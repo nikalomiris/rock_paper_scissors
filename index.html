@@ -19,17 +19,29 @@
                     .toLowerCase();
                 var userSelectionNumeric;
                 switch(userSelectionLex) {
-                    case "rock": userSelectionNumeric = 1;
-                    case "papper": userSelectionNumeric = 2;
-                    case "scissors": userSelectionNumeric = 3;
+                    case "rock": 
+                        userSelectionNumeric = 1;
+                        break;
+                    case "papper": 
+                        userSelectionNumeric = 2;
+                        break;
+                    case "scissors": 
+                        userSelectionNumeric = 3;
+                        break;
                     default: userSelectionNumeric = 1;
                 }
                 var computerSelectionNumeric = computerPlay();
                 var computerSelectionLex;
                 switch(computerSelectionNumeric) {
-                    case 1: computerSelectionLex = "rock";
-                    case 2: computerSelectionLex = "papper";
-                    case 3: computerSelectionLex = "scissors";
+                    case 1: 
+                        computerSelectionLex = "rock";
+                        break;
+                    case 2: 
+                        computerSelectionLex = "papper";
+                        break;
+                    case 3: 
+                        computerSelectionLex = "scissors";
+                        break;
                     default: computerSelectionLex = "rock";
                 }
                 var roundResult = playRound(userSelectionNumeric, computerSelectionNumeric);
