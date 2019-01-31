@@ -3,8 +3,15 @@
         <button onclick="game('rock')">rock</button>
         <button onclick="game('papper')">papper</button>
         <button onclick="game('scissors')">scissors</button>
+        <h5>Computer Selection:</h5>
+        <h4>Result:</h4>
+        <h3>Score: 0</h3>
     </div>
     <script>
+        let score = 0;
+        const scoreField = document.querySelector('h3');
+        const computerSelectionField = document.querySelector('h5');
+        const resultField = document.querySelector('h4');
         function computerPlay() {
             var x = Math.floor((Math.random() * 3) + 1);
             console.log(x);
@@ -20,7 +27,6 @@
             }
         }
         function game(userSelectionLex) {
-            var score = 0;
             var userSelectionNumeric;
             switch (userSelectionLex) {
                 case "rock": userSelectionNumeric = 1;
@@ -43,16 +49,18 @@
                 break;
                 default: computerSelectionLex = "rock";
             }
+            computerSelectionField.textContent = "Computer Selection: " + computerSelectionLex;
             var roundResult = playRound(userSelectionNumeric, computerSelectionNumeric);
             if (roundResult == "player") {
-                console.log("You Win! " + userSelectionLex
-                    + " beats " + computerSelectionLex);
+                resultField.textContent = "Result: You Win! " + userSelectionLex
+                    + " beats " + computerSelectionLex;
                 score++;
             } else {
-                console.log("You Lose! " + computerSelectionLex
-                    + " beats " + userSelectionLex);
+                resultField.textContent = "Result: You Lose! " + computerSelectionLex
+                    + " beats " + userSelectionLex;
                 score--;
             }
+            scoreField.textContent = "Score: " + score;
             if (score == 5) {
                 console.log("Congratulations!! You Won!");
             } else if (score == -5) {
